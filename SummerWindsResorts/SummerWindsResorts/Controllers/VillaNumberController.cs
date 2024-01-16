@@ -133,7 +133,13 @@ namespace SummerWindsResorts.Controllers
                 return RedirectToAction(nameof(Index));
             }
             TempData["error"] = "The villa number could not be deleted.";
-            return View();
+            villaNumberVM.VillaList = _villaService.GetAllVillas().Select(u => new SelectListItem
+            {
+                Text = u.Name,
+                Value = u.Id.ToString()
+            });
+            villaNumberVM.VillaNumber = _villaNumberService.GetVillaNumberById(villaNumberVM.VillaNumber.Villa_Number);
+            return View(villaNumberVM);
         }
     }
 }

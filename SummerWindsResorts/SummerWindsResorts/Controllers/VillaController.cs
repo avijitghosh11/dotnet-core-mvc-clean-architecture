@@ -81,7 +81,7 @@ namespace SummerWindsResorts.Controllers
         [HttpPost]
         public IActionResult Delete(Villa obj)
         {
-         bool deleted = _villaService.DeleteVilla(obj.Id);
+            bool deleted = _villaService.DeleteVilla(obj.Id);
             if (deleted)
             {
                 TempData["success"] = "The villa has been deleted successfully.";
@@ -91,7 +91,8 @@ namespace SummerWindsResorts.Controllers
             {
                 TempData["error"] = "Failed to delete the villa.";
             }
-            return View();
+            obj = _villaService.GetVillaById(obj.Id);
+            return View(obj);
         }
     }
 }
