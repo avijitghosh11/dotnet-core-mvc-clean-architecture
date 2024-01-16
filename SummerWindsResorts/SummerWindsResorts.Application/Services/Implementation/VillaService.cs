@@ -49,9 +49,9 @@ namespace SummerWindsResorts.Application.Services.Implementation
                     {
                         var oldImagePath = Path.Combine(_webHostEnvironment.WebRootPath, objFromDb.ImageUrl.TrimStart('\\'));
 
-                        if (System.IO.File.Exists(oldImagePath))
+                        if (File.Exists(oldImagePath))
                         {
-                            System.IO.File.Delete(oldImagePath);
+                            File.Delete(oldImagePath);
                         }
                     }
                     _unitOfWork.Villa.Remove(objFromDb);
