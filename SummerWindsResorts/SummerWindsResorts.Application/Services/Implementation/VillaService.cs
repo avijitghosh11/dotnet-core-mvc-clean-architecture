@@ -56,9 +56,10 @@ namespace SummerWindsResorts.Application.Services.Implementation
                     }
                     _unitOfWork.Villa.Remove(objFromDb);
                     _unitOfWork.Save();
+                    return true;
 
                 }
-                return true;
+                return false;
             }
             catch (Exception)
             {
